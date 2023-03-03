@@ -1,8 +1,11 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
+\usepackage{textcomp}
+\newcommand{\forceindent}{\leavevmode{\parindent=1em\indent}}
+
 
 \title{AI proj 2}
-\author{DANIEL TEYTEL}
+\author{DANIEL TEYTEL, Long Tran}
 \date{February 2023}
 
 \begin{document}
@@ -23,6 +26,93 @@
 (Pitesti, 503, 403, 100)
 
 (Bucharest, 504, 504, 0)
+
+\item[]
+Problem 2 (10 points): Consider a state space where the start state is number 1 and each state k has two successors: numbers 2k and 2k + 1.
+
+(a) Suppose the goal state is 11. List the order in which states will be visited for breadth-first search, depth-limited search with limit 3, and iterative deepening search.
+
+\textit{Assume for each iteration, algorithms will pick the lowest values in the available items list}
+
+\textbf{Bread-first Search}
+Pick s(1) \verb|->| expand s(2), s(3) \\
+\forceindent Pick s(2) \verb|->| expand s(4), s(5) \\
+\forceindent Pick s(3) \verb|->| expand s(6), s(7) \\
+\forceindent\forceindent Pick s(4) \verb|->| expand s(8), s(9) \\
+\forceindent\forceindent Pick s(5) \verb|->| expand s(10), s(11) \verb|->| find target 11 \verb|->| program done.\\
+
+\textbf{Depth-limited Search with 3}
+
+Search is limited with max depth is 3. Suppose s(1) is depth 0.
+
+\#1 Pick s(1) \verb|->| s(2) \verb|->| s(4) \verb|->| s(8) \\
+\#1.2 Pick s(1) \verb|->| s(2) \verb|->| s(4) \verb|->| s(9) \\
+\#1.3 Pick s(1) \verb|->| s(2) \verb|->| s(5) \verb|->| s(10) \\
+\#1.4 Pick s(1) \verb|->| s(2) \verb|->| s(5) \verb|->| s(11) \verb|->| Find target \\
+\verb|->| Program done.
+
+\textbf{Iterative Deepening Search}
+
+\textbf{Limit = 1}\\
+s(1) \verb|->| s(2)\\
+s(1) \verb|->| s(3)\\
+\verb|->| Reached limit
+
+
+\textbf{Limit = 2}\\
+s(1) \verb|->| s(2) \verb|->| s(4)\\
+s(1) \verb|->| s(2) \verb|->| s(5)\\
+s(1) \verb|->| s(3) \verb|->| s(6)\\
+s(1) \verb|->| s(3) \verb|->| s(7)\\
+\verb|->| Reached limit
+
+\textbf{Limit = 3}\\
+\#1 Pick s(1) \verb|->| s(2) \verb|->| s(4) \verb|->| s(8) \\
+\#1.2 Pick s(1) \verb|->| s(2) \verb|->| s(4) \verb|->| s(9) \\
+\#1.3 Pick s(1) \verb|->| s(2) \verb|->| s(5) \verb|->| s(10) \\
+\#1.4 Pick s(1) \verb|->| s(2) \verb|->| s(5) \verb|->| s(11) \verb|->| Find target \\
+\verb|->| Program done.
+
+(b) How well would bidirectional search work on this problem? List the order in which states will be visited. What is the branching factor in each direction of the bidirectional search?
+
+\item[]
+Problem 3 (5 points): Which of the following statements are correct and which ones are wrong?
+
+(a) Breadth-first search is a special case of uniform-cost search.
+
+True
+
+(b) Depth-first search is a special case of best-first tree search.
+
+Wrong
+
+(c) Uniform-cost search is a special case of A∗search.
+
+True, if setting h(i) = 0 for each n.
+
+(d) Depth-first graph search is guaranteed to return an optimal solution.
+
+Wrong, it is bounded by max depth of the problem and may run infintely
+
+(e) Breadth-first graph search is guaranteed to return an optimal solution.
+
+True
+
+(f) Uniform-cost graph search is guaranteed to return an optimal solution.
+
+True
+
+(g) A∗ graph search is guaranteed to return an optimal solution if the heuristic is consistent.
+
+True
+
+(h) A∗ graph search is guaranteed to expand no more nodes than depth-first graph search if the heuristic is consistent.
+
+False, in best case, depth-first search find optimal solution in first path try.
+
+(i) A∗ graph search is guaranteed to expand no more nodes than uniform-cost graph search if the heuristic is consistent.
+
+True
 \end{enumerate}
 
 \end{document}
