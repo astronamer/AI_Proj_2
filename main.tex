@@ -75,6 +75,21 @@ s(1) \verb|->| s(3) \verb|->| s(7)\\
 
 (b) How well would bidirectional search work on this problem? List the order in which states will be visited. What is the branching factor in each direction of the bidirectional search?
 
+\textbf{Bidirectional order:}
+
+It is sufficient to utilize bidirectional search. On the search from target, due to the node's characteristics, the branch factor (b) on the search tree from target is 1 (each number x has a parent node, which is x/2).
+
+Therefore, each iteration on search tree from target will reduce 1 depth level for the search tree from 1.
+
+Therefore, the time complexity reduce from $2^n$ to $2^{n/2}$
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=.4\linewidth]{Hw2_2b.png}
+    \caption{Bidirectional order}
+    \label{bidirectional}
+\end{figure}
+
 \item[]
 Problem 3 (5 points): Which of the following statements are correct and which ones are wrong?
 
@@ -86,7 +101,7 @@ True
 
 Wrong
 
-(c) Uniform-cost search is a special case of A∗search.
+(c) Uniform-cost search is a special case of $A\ast$ search.
 
 True, if setting h(i) = 0 for each n.
 
@@ -102,17 +117,41 @@ True
 
 True
 
-(g) A∗ graph search is guaranteed to return an optimal solution if the heuristic is consistent.
+(g) $A\ast$ graph search is guaranteed to return an optimal solution if the heuristic is consistent.
 
 True
 
-(h) A∗ graph search is guaranteed to expand no more nodes than depth-first graph search if the heuristic is consistent.
+(h) $A\ast$ graph search is guaranteed to expand no more nodes than depth-first graph search if the heuristic is consistent.
 
 False, in best case, depth-first search find optimal solution in first path try.
 
-(i) A∗ graph search is guaranteed to expand no more nodes than uniform-cost graph search if the heuristic is consistent.
+(i) $A\ast$ graph search is guaranteed to expand no more nodes than uniform-cost graph search if the heuristic is consistent.
 
 True
+
+\item[]
+Problem 4 (2 points): Iterative deepening is sometimes used as an alternative to breadth first search. Give one advantage
+of iterative deepening over BFS, and give one disadvantage of iterative deepening as compared with BFS. Be concise and
+specific
+
+\textbf{Advantage of Iterative Deepening}\\
+- Due to the utilization of recursion function, it consumes much less memory.
+Suppose search tree has large branching factor (b) and current depth limit is d, the memory it uses is to memorize the current path and the b branches at d level.
+\verb|->| It consumes d + b of memory space.
+Meanwhile, BFS consumes $b^d$ of memory space to memorize all the states.
+
+\verb|->| Iterative Deepening Search has much more efficient space complexity.
+
+\textbf{Disadvantage of Iterative Deepening}
+- It revisits the states many time. Each time it increases the depth limit, it would revisit the start states again.\\
+- If a target is found at depth d and tree search has branch factor b, the total number of search revisits each depth i is 
+\[ \Sigma_{i=0}^d (d-i+1) \ast b^i \]
+\[ b^d \ast (1 - 1/b)^{-2} \]
+\[ = O(b^d)\]
+
+Comparing to BFS, Iterative Deepening has same Time Complexity but its cons is to revisiting states as a constant rate.
+
 \end{enumerate}
+
 
 \end{document}
