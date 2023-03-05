@@ -1,34 +1,36 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
-\usepackage{textcomp}
+\usepackage[a4paper, total={7in, 10in}]{geometry}
 \newcommand{\forceindent}{\leavevmode{\parindent=1em\indent}}
 
 
-\title{AI proj 2}
-\author{DANIEL TEYTEL, Long Tran}
+\title{CS 440 HW2}
+\author{Fulton Wilcox, Daniel Teytel, Long Tran}
 \date{February 2023}
 
 \begin{document}
 
 \maketitle
 
-\section{Introduction}
 \begin{enumerate}
 \item[1:]    
-(Mchadia, 311, 70, 241)
+Trace the operation of A∗search (use the tree version, i.e. without using a closed list) applied to the problem of getting to Bucharest from Lugoj using the straight-line distance heuristic. That is, show the sequence of nodes that the algorithm will consider and the f , g, and h score for each node. You don’t need to draw the graph, just write down a sequence of (city, f (city), g(city), h(city)) in the order in which the nodes are expanded.
+\begin{enumerate}
+    \item[] (Lugoj, 244, 0, 244)
+    \item[] (Mehadia, 311, 70, 241)
+    \item[] (Lugoj, 384, 140,244 )
+    \item[] (Drobeta, 387, 145, 242)
+    \item[] (Craiova, 425, 265, 160)
+    \item[] (Timisoara, 440, 111, 329)
+    \item[] (Mehadia, 451, 210, 241)
+    \item[] (Mehadia, 456, 215, 241)
+    \item[] (Lugoj, 466, 222, 244)
+    \item[] (Pitesti, 503, 403, 100)
+    \item[] (Bucharest, 504, 504, 0) (goal)
+\end{enumerate}
 
-(Drobeta, 387, 145, 242)
-
-(Craiova, 425, 265, 160)
-
-(Timisoara, 440, 111, 329)
-
-(Pitesti, 503, 403, 100)
-
-(Bucharest, 504, 504, 0)
-
-\item[]
-Problem 2 (10 points): Consider a state space where the start state is number 1 and each state k has two successors: numbers 2k and 2k + 1.
+\item[2:]
+Consider a state space where the start state is number 1 and each state k has two successors: numbers 2k and 2k + 1.
 
 (a) Suppose the goal state is 11. List the order in which states will be visited for breadth-first search, depth-limited search with limit 3, and iterative deepening search.
 
@@ -90,8 +92,8 @@ Therefore, the time complexity reduce from $2^n$ to $2^{n/2}$
     \label{bidirectional}
 \end{figure}
 
-\item[]
-Problem 3 (5 points): Which of the following statements are correct and which ones are wrong?
+\item[3.]
+Which of the following statements are correct and which ones are wrong?
 
 (a) Breadth-first search is a special case of uniform-cost search.
 
@@ -129,8 +131,8 @@ False, in best case, depth-first search find optimal solution in first path try.
 
 True
 
-\item[]
-Problem 4 (2 points): Iterative deepening is sometimes used as an alternative to breadth first search. Give one advantage
+\item[4.]
+Iterative deepening is sometimes used as an alternative to breadth first search. Give one advantage
 of iterative deepening over BFS, and give one disadvantage of iterative deepening as compared with BFS. Be concise and
 specific
 
@@ -150,6 +152,14 @@ Meanwhile, BFS consumes $b^d$ of memory space to memorize all the states.
 \[ = O(b^d)\]
 
 Comparing to BFS, Iterative Deepening has same Time Complexity but its cons is to revisiting states as a constant rate.
+
+\item[5.]
+Prove that if a heuristic is consistent, it must be admissible. Construct an example of an admissible
+heuristic that is not consistent. (Hint: you can draw a small graph of 3 nodes and write arbitrary cost and heuristic values
+so that the heuristic is admissible but not consistent).
+
+(Assuming the minimum cost between nodes is $>$ 0)\\
+Consider any arbitrary graph G and a path P with no cycles consisting of 3 nodes \{n, n', target node\}.  Also assume n and target node are connected.  Under the assumption of consistency, h(n) is bounded above by h(n') + g(n) where g(n) is the step cost from n to n'.  The true cost from n to the target node is g(n) + g(n').  Given that n' and the target node are connected, h(n') = g(n').  The upper bound for h(n) can then be expressed as g(n) + g(n'), which is the true cost from n to target.  If h(n) exceeded this, it would be an overestimation of the true cost from n to target, which contradicts admissibility.  As a result, all consistent heuristics must be admissible.
 
 \end{enumerate}
 
