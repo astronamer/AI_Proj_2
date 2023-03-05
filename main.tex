@@ -159,7 +159,7 @@ heuristic that is not consistent. (Hint: you can draw a small graph of 3 nodes a
 so that the heuristic is admissible but not consistent).
 
 (Assuming the minimum cost between nodes is $>$ 0)\\
-Consider any arbitrary graph G and a path P with no cycles consisting of 3 nodes \{n, n', target node\}.  Also assume n and target node are connected.  Under the assumption of consistency, h(n) is bounded above by h(n') + g(n) where g(n) is the step cost from n to n'.  The true cost from n to the target node is g(n) + g(n').  Given that n' and the target node are connected, h(n') = g(n').  The upper bound for h(n) can then be expressed as g(n) + g(n'), which is the true cost from n to target.  If h(n) exceeded this, it would be an overestimation of the true cost from n to target, which contradicts admissibility.  As a result, all consistent heuristics must be admissible.
+Consider any arbitrary graph G and a path P consisting of 3 nodes \{n, n', target node\}.  Also assume n and target node are connected.  Under the assumption of consistency, h(n) is bounded above by h(n') + g(n) where g(n) is the step cost from n to n'.  The true cost from n to the target node is g(n) + g(n').  Given that n' and the target node are connected, h(n') = g(n').  The upper bound for h(n) can then be expressed as g(n) + g(n'), which is the true cost from n to target.  If h(n) exceeded this, it would be an overestimation of the true cost from n to target, which contradicts admissibility.  As a result, all consistent heuristics must be admissible.
 
 \begin{figure}[h!]
     \centering
@@ -169,6 +169,8 @@ Consider any arbitrary graph G and a path P with no cycles consisting of 3 nodes
 \end{figure}
 
 This heuristic is admissible because for n and o (where p is the target), h(n) and h(o) underestimate the true costs for n and o, respectively.  However, h(o) $>$ g(o, p, op) + h(p).
+
+\item[6.] In any constraint satisfaction problem, it is a good idea to select the variable that is the most constrained because there will be less wasted time pruning a corresponding branch that will fail because a variable with more constraints is likely to fail earlier than a less constrained variable.  Choosing the value that's the least constrained is also a good idea because it rules out fewer options for neighboring variables. 
 
 \end{enumerate}
 
