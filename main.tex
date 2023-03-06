@@ -163,7 +163,7 @@ Consider any arbitrary graph G and a path P consisting of 3 nodes \{n, n', targe
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=.4\linewidth]{graph.png}
+    \includegraphics[width=.4\linewidth]{AI2 P7 b.png}
     \caption{}
     \label{bidirectional}
 \end{figure}
@@ -172,6 +172,22 @@ This heuristic is admissible because for n and o (where p is the target), h(n) a
 
 \item[6.] In any constraint satisfaction problem, it is a good idea to select the variable that is the most constrained because there will be less wasted time pruning a corresponding branch that will fail because a variable with more constraints is likely to fail earlier than a less constrained variable.  Choosing the value that's the least constrained is also a good idea because it rules out fewer options for neighboring variables. 
 
+\item[7.] 
+(a) Using the minimax procedure, the best move for the max player would be to select C. 
+
+(b) \begin{figure}[h]
+    \centering
+    \includegraphics[width=.4\linewidth]{AI2 P7 b.png}
+    \caption{Left to Right alpha-beta pruning on the tree}
+    \label{bidirectional}
+\end{figure}
+
+(c)\begin{figure}[h]
+    \centering
+    \includegraphics[width=.4\linewidth]{AI2 P7 c.png}
+    \caption{Right to Left alpha-beta pruning on the tree}
+    \label{bidirectional}
+\end{figure}
 \end{enumerate}
 
 
