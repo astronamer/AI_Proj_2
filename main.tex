@@ -175,19 +175,56 @@ This heuristic is admissible because for n and o (where p is the target), h(n) a
 \item[7.] 
 (a) Using the minimax procedure, the best move for the max player would be to select C. 
 
-(b) \begin{figure}[h]
+\begin{figure}[h!]
+    (b)
     \centering
     \includegraphics[width=.4\linewidth]{AI2 P7 b.png}
     \caption{Left to Right alpha-beta pruning on the tree}
     \label{bidirectional}
 \end{figure}
 
-(c)\begin{figure}[h]
+\begin{figure}[h!]
+    (c)
     \centering
     \includegraphics[width=.4\linewidth]{AI2 P7 c.png}
     \caption{Right to Left alpha-beta pruning on the tree}
     \label{bidirectional}
 \end{figure}
+
+\item[8.] 
+(a) This heuristic is admissible. since both h(1) and h(2) are admissible, they are both underestimates, meaning the smaller of the two values is not an overestimation of the distance. 
+
+This heuristic is consistent. since both h(1) and h(2) are consistent, the h(1) and h(2) values of adjacent nodes is also less than h(1) and h(2) respectively. thus, regardless whether h(1) or h(2) is smaller, the heuristic value of the node is going to be less than the heuristic value adjacent nodes + the distance between these nodes. 
+
+(b) This heuristic is admissible. since both h(1) and h(2) are admissible, they are both underestimates. Let h(1) be the heuristic with the larger value than h(2) and w to be the value which h(1) is multiplied by. since w+1-w=1, the sum of h(1)*w+h(2)*(1-w)=h(1)w+h(2)-h(2)w=h(2)+(h(1)-h(2))w. 
+
+Since w$\le$1:
+
+(h(1)-h(2))w$\le$h(1)-h(2), 
+
+meaning:
+
+h(2)+(h(1)-h(2))w$\le$h(2)+h(1)-h(2)=h(1). 
+
+Thus, since h(1) is admissible, is also admissible since h$\le$ h(1). 
+
+This heuristic h is consistent. Since both h(1) and h(2) are consistent, the h(1) and h(2) values of adjacent nodes is also less than h(1) and h(2) respectively. Let h(1) be the heuristic with the larger value than h(2) and w to be the value which h(1) is multiplied by. Let g, g(1), and g(2) be the h, h(1) and h(2) values of adjacent nodes, and T be the distance between the nodes. It follows that:
+
+h=h(1)*w+h(2)*(1-w)$\ge$(g(1)+T)*w+(g(2)+T)*(1-w)=g(2)+(g(1)-g(2))w+T=g+T
+
+meaning h$\ge$g+T, meaning h is consistent. 
+
+(c)
+h(n) = max{h1(n), h2(n)}
+This heuristic is admissible. Since both h(1) and h(2) are admissible, they are both underestimates. Thus, the larger of the two underestimates will still be an underestimate. 
+
+This heuristic is consistent. Since both h(1) and h(2) are consistent, the h(1) and h(2) values of the adjacent nodes are less than the h(1) and h(2) values of this node.  Let h(1) be the heuristic with the larger value than h(2) and w to be the value which h(1) is multiplied by. Let g, g(1), and g(2) be the h, h(1) and h(2) values of adjacent nodes, and T be the distance between the nodes. Since h(1)$\ge$ g(1)+T and h(2)$\ge$ g(2)+T:
+
+h= Max(h(1), h(2))$\ge$ Max(g(1)+T,g(2)+T)= Max(g(1),g(2))+T= g+T. 
+
+Thus, h is consistent. 
+
+Since all three heuristics are consistent and admissible, the closest estimate would be the most desireable. Heuristic A is equal to the smaller of h(1) and h(2). Heuristic B is less than or equal to the larger of h(1) and h(2). Heuristic C is equal to the larger of h(1) and h(2). Thus, Heuristic C is certain to be larger than Heuristics A and B, meaning Heuristic C is the most desireable for A*
 \end{enumerate}
 
 
