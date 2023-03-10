@@ -225,6 +225,14 @@ h= Max(h(1), h(2))$\ge$ Max(g(1)+T,g(2)+T)= Max(g(1),g(2))+T= g+T.
 Thus, h is consistent. 
 
 Since all three heuristics are consistent and admissible, the closest estimate would be the most desireable. Heuristic A is equal to the smaller of h(1) and h(2). Heuristic B is less than or equal to the larger of h(1) and h(2). Heuristic C is equal to the larger of h(1) and h(2). Thus, Heuristic C is certain to be larger than Heuristics A and B, meaning Heuristic C is the most desireable for A*
+
+\item[9.] 
+(a) Hill Climbing would work better than Simulated Annealing if the altitudes of all local minima in the problem are approximately equal.
+(b) random selection of states works better than Simulated Annealing when the value of the average point on the problem is significantly closer to the global maximum than to the global minimum. 
+(c) Simulated Annealing works best on problems where most local maxima are not approximately equal to the global maximum or when the average point is not significantly close to the global maximum.  
+(d) Instead of returning the current state it may be better to return the state corresponding to the largest value we have visited. 
+(e) A way to use the additional memory productively is to use it to store the start states of each iteration of Simulated Annealing. this way, starting states can be distributed evenly such that as large a variety of start states as possible can be observed.
+(f) One potential way to use the randomness of Simulated Annealing in Gradient Ascent is to use a temperature measurement to influence the decision of which state to select next based upon the steepness of the descent to the next state. 
 \end{enumerate}
 
 
